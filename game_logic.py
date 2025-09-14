@@ -7,10 +7,14 @@ WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
 def get_random_word():
     """Selects a random word from the list."""
-    return WORDS[random.randint(0, len(WORDS) - 1)]
+    return WORDS[random.choice(WORDS)]
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
+    """
+    This function receives the basic states of the game as argument and update their values according to
+    the current condition of the game loop.
+    """
     # Ensure we don't go out of bounds
     stage_index = min(mistakes, len(STAGES) - 1)
     print(STAGES[stage_index])
@@ -28,6 +32,11 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def play_game():
+    """
+    This function is the responsible for the execution of game logic based on the current states using the
+    predefined methods display_game_state() and get_random_word().
+    """
+
     secret_word = get_random_word()
     guessed_letters = []
     mistakes = 0
